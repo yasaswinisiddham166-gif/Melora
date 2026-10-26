@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Music - Melora</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <img src="assets/Images/melora-logo.png" alt="Melora Logo">
+        </div>
+
+        <nav class="navigation">
+
+            <a href="index.html" class="nav-item">
+                <span>⌂</span>
+                <p>Home</p>
+            </a>
+
+            <a href="explore.html" class="nav-item">
+                <span>⌕</span>
+                <p>Explore</p>
+            </a>
+
+            <a href="my-music.html" class="nav-item active">
+                <span>♫</span>
+                <p>My Music</p>
+            </a>
+
+            <a href="my-music.html" class="nav-item">
+                <span>♡</span>
+                <p>Liked Songs</p>
+            </a>
+
+            <a href="friends.html" class="nav-item">
+                <span>👥</span>
+                <p>Friends</p>
+            </a>
+
+            <a href="chat.html" class="nav-item">
+                <span>💬</span>
+                <p>Chat</p>
+            </a>
+
+            <a href="lyra.html" class="nav-item">
+                <span>🤖</span>
+                <p>Lyra AI</p>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="#" class="nav-item">
+                <span>⚙</span>
+                <p>Settings</p>
+            </a>
+
+            <a href="#" class="nav-item" onclick="logoutUser()">
+                <span>🚪</span>
+                <p>Logout</p>
+            </a>
+
+            <a href="#" class="profile-small">
+
+                <div class="avatar">V</div>
+
+                <div>
+                    <strong id="profileName">Varshika</strong>
+                    <small>View Profile</small>
+                </div>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div class="mobile-brand">
+
+                <img
+                    src="assets/Images/melora-logo.png"
+                    alt="Melora"
+                >
+
+            </div>
+
+            <div class="search-box">
+
+                <span>⌕</span>
+
+                <input
+                    type="text"
+                    id="musicSearch"
+                    placeholder="Search your music..."
+                >
+
+            </div>
+
+            <div class="top-actions">
+
+                <button class="icon-button">
+                    ♡
+                </button>
+
+                <button class="notification">
+                    ♧
+                    <span></span>
+                </button>
+
+                <div class="top-profile">
+                    <div class="avatar">V</div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= PAGE HEADER ================= -->
+
+        <section class="explore-header">
+
+            <p class="mini-title">
+                YOUR COLLECTION
+            </p>
+
+            <h1>
+                My Music
+            </h1>
+
+            <p>
+                Your favourite songs, playlists and listening history.
+            </p>
+
+        </section>
+
+
+        <!-- ================= STATS ================= -->
+
+        <section class="music-stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ♡
+                </div>
+
+                <div>
+                    <strong id="likedCount">0</strong>
+                    <span>Liked Songs</span>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ♫
+                </div>
+
+                <div>
+                    <strong>6</strong>
+                    <span>Playlists</span>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ◷
+                </div>
+
+                <div>
+                    <strong>12h</strong>
+                    <span>Listening Time</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= LIKED SONGS ================= -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="mini-title">
+                        YOUR FAVOURITES
+                    </p>
+
+                    <h2>
+                        Liked Songs
+                    </h2>
+
+                </div>
+
+                <button
+                    class="see-all"
+                    onclick="showToast('These are your liked songs ❤️')"
+                >
+                    View all →
+                </button>
+
+            </div>
+
+
+            <!-- DYNAMIC LIKED SONGS -->
+
+            <div
+                class="liked-list"
+                id="likedSongsList"
+            >
+
+                <div style="padding:30px;text-align:center;">
+                    Loading your liked songs...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PLAYLISTS ================= -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="mini-title">
+                        ORGANIZE YOUR MUSIC
+                    </p>
+
+                    <h2>
+                        My Playlists
+                    </h2>
+
+                </div>
+
+                <button
+                    class="create-playlist-button"
+                    onclick="createPlaylist()"
+                >
+                    + Create Playlist
+                </button>
+
+            </div>
+
+
+            <div
+                class="playlist-grid"
+                id="playlistGrid"
+            >
+
+                <div class="playlist-card">
+
+                    <div class="playlist-cover playlist-one">
+                        <span>♡</span>
+                    </div>
+
+                    <div class="playlist-info">
+
+                        <h3>
+                            My Love Songs
+                        </h3>
+
+                        <p>
+                            18 songs • 🔒 Private
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="playlist-card">
+
+                    <div class="playlist-cover playlist-two">
+                        <span>🌿</span>
+                    </div>
+
+                    <div class="playlist-info">
+
+                        <h3>
+                            Chill Vibes
+                        </h3>
+
+                        <p>
+                            24 songs • 👥 Friends
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="playlist-card">
+
+                    <div class="playlist-cover playlist-three">
+                        <span>☀️</span>
+                    </div>
+
+                    <div class="playlist-info">
+
+                        <h3>
+                            Happy Days
+                        </h3>
+
+                        <p>
+                            15 songs • 🌎 Public
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="new-playlist-card"
+                    onclick="createPlaylist()"
+                >
+
+                    <span>+</span>
+
+                    <strong>
+                        Create playlist
+                    </strong>
+
+                    <small>
+                        Make your own collection
+                    </small>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RECENTLY PLAYED ================= -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="mini-title">
+                        LISTEN AGAIN
+                    </p>
+
+                    <h2>
+                        Recently Played
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="recent-grid">
+
+                <div class="recent-card">
+
+                    <div class="recent-cover cover-one">
+                        ♪
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Recently Played
+                        </strong>
+
+                        <p>
+                            Your listening history
+                        </p>
+
+                    </div>
+
+                    <button onclick="showToast('Recently played feature coming soon 🎵')">
+                        ▶
+                    </button>
+
+                </div>
+
+
+                <div class="recent-card">
+
+                    <div class="recent-cover cover-two">
+                        ♫
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Discover More
+                        </strong>
+
+                        <p>
+                            Explore new music
+                        </p>
+
+                    </div>
+
+                    <button onclick="window.location.href='explore.html'">
+                        ▶
+                    </button>
+
+                </div>
+
+
+                <div class="recent-card">
+
+                    <div class="recent-cover cover-four">
+                        ♪
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Melora Music
+                        </strong>
+
+                        <p>
+                            Listen again
+                        </p>
+
+                    </div>
+
+                    <button onclick="window.location.href='explore.html'">
+                        ▶
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= MUSIC PLAYER ================= -->
+
+    <div class="music-player">
+
+        <div class="now-playing">
+
+            <div class="mini-cover">
+                ♪
+            </div>
+
+            <div class="song-details">
+
+                <strong id="currentSong">
+                    Choose a song
+                </strong>
+
+                <span id="currentArtist">
+                    Melora
+                </span>
+
+            </div>
+
+            <button
+                class="like-button"
+                id="playerLikeButton"
+                onclick="toggleCurrentLike()"
+            >
+                ♡
+            </button>
+
+        </div>
+
+
+        <div class="player-controls">
+
+            <div class="control-buttons">
+
+                <button onclick="previousSong()">
+                    ↶
+                </button>
+
+                <button
+                    class="play-button"
+                    id="mainPlayButton"
+                    onclick="togglePlay()"
+                >
+                    ▶
+                </button>
+
+                <button onclick="nextSong()">
+                    ↷
+                </button>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <span id="currentTime">
+                    0:00
+                </span>
+
+                <div
+                    class="progress-bar"
+                    onclick="seekSong(event)"
+                >
+
+                    <div
+                        class="progress"
+                        id="progress"
+                    ></div>
+
+                </div>
+
+                <span id="totalTime">
+                    0:00
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="player-options">
+
+            <button>
+                ♧
+            </button>
+
+            <button>
+                🔊
+            </button>
+
+            <div class="volume-bar">
+                <div></div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= AUDIO ================= -->
+
+    <audio id="audioPlayer"></audio>
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div
+        class="toast"
+        id="toast"
+    >
+        Welcome to Melora
+    </div>
+
+
+    <!-- SESSION -->
+
+    <script src="js/session.js"></script>
+
+    <script>
+
+        checkLogin();
+
+
+        /* ================= USER ================= */
+
+        const loggedInUser =
+            JSON.parse(
+                localStorage.getItem("meloraUser")
+            );
+
+
+        if (loggedInUser) {
+
+            document.getElementById("profileName").textContent =
+                loggedInUser.name;
+
+        }
+
+
+        /* ================= VARIABLES ================= */
+
+        let likedSongs = [];
+
+        let currentSongData = null;
+
+        let isPlaying = false;
+
+
+        const audioPlayer =
+            document.getElementById("audioPlayer");
+
+
+        /* ================= LOAD LIKED SONGS ================= */
+
+        async function loadLikedSongs() {
+
+            const list =
+                document.getElementById("likedSongsList");
+
+            if (!loggedInUser || !loggedInUser.id) {
+
+                list.innerHTML = `
+                    <div style="padding:30px;text-align:center;">
+                        Please login to view liked songs ❤️
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `http://localhost:5000/api/likes/${loggedInUser.id}`
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Unable to load liked songs"
+                    );
+
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                likedSongs =
+                    data
+                        .filter(item => item.songId)
+                        .map(item => ({
+                            likeId: item._id,
+                            ...item.songId
+                        }));
+
+
+                document.getElementById("likedCount")
+                    .textContent =
+                    likedSongs.length;
+
+
+                displayLikedSongs();
+
+
+            } catch (error) {
+
+                console.error(
+                    "LIKED SONGS ERROR:",
+                    error
+                );
+
+
+                list.innerHTML = `
+                    <div style="padding:30px;text-align:center;">
+                        Unable to load liked songs.
+                        <br>
+                        Please make sure the backend is running.
+                    </div>
+                `;
+
+            }
+
+        }
+
+
+        /* ================= DISPLAY LIKED SONGS ================= */
+
+        function displayLikedSongs() {
+
+            const list =
+                document.getElementById("likedSongsList");
+
+
+            if (likedSongs.length === 0) {
+
+                list.innerHTML = `
+                    <div style="padding:40px;text-align:center;">
+                        <h3>No liked songs yet ❤️</h3>
+                        <p>Go to Explore and like some songs.</p>
+
+                        <button
+                            class="see-all"
+                            onclick="window.location.href='explore.html'"
+                            style="margin-top:15px;"
+                        >
+                            Explore Music →
+                        </button>
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            list.innerHTML = "";
+
+
+            likedSongs.forEach((song, index) => {
+
+                const songElement =
+                    document.createElement("div");
+
+                songElement.className =
+                    "liked-song";
+
+
+                songElement.innerHTML = `
+
+                    <div class="liked-cover cover-${(index % 4) + 1}">
+
+                        ${
+                            song.cover
+                            ?
+                            `<img
+                                src="${song.cover}"
+                                alt="${escapeHtml(song.title)}"
+                                style="
+                                    width:100%;
+                                    height:100%;
+                                    object-fit:cover;
+                                    border-radius:inherit;
+                                "
+                            >`
+                            :
+                            "♪"
+                        }
+
+                    </div>
+
+
+                    <div class="liked-info">
+
+                        <strong>
+                            ${escapeHtml(song.title)}
+                        </strong>
+
+                        <span>
+                            ${escapeHtml(song.artist)}
+                        </span>
+
+                    </div>
+
+
+                    <span class="liked-duration">
+                        ${song.language || "Music"}
+                    </span>
+
+
+                    <button
+                        class="small-play"
+                        onclick="playSongByIndex(${index})"
+                    >
+                        ▶
+                    </button>
+
+
+                    <button
+                        class="heart-filled"
+                        onclick="unlikeSong('${song._id}')"
+                        title="Unlike"
+                    >
+                        ♥
+                    </button>
+
+                `;
+
+
+                list.appendChild(songElement);
+
+            });
+
+        }
+
+
+        /* ================= PLAY SONG ================= */
+
+        function playSongByIndex(index) {
+
+            const song =
+                likedSongs[index];
+
+
+            if (!song) return;
+
+
+            currentSongData =
+                song;
+
+
+            document.getElementById("currentSong")
+                .textContent =
+                song.title;
+
+
+            document.getElementById("currentArtist")
+                .textContent =
+                song.artist;
+
+
+            if (song.audioUrl) {
+
+                audioPlayer.src =
+                    song.audioUrl;
+
+                audioPlayer.play()
+                    .then(() => {
+
+                        isPlaying = true;
+
+                        document.getElementById(
+                            "mainPlayButton"
+                        ).textContent = "❚❚";
+
+                    })
+                    .catch(error => {
+
+                        console.log(
+                            "Audio play error:",
+                            error
+                        );
+
+                        showToast(
+                            "Audio could not be played 🎵"
+                        );
+
+                    });
+
+            }
+
+
+            showToast(
+                "Playing " + song.title + " 🎵"
+            );
+
+        }
+
+
+        /* ================= UNLIKE ================= */
+
+        async function unlikeSong(songId) {
+
+            if (!loggedInUser) {
+
+                showToast(
+                    "Please login first"
+                );
+
+                return;
+
+            }
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "http://localhost:5000/api/likes",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                userId:
+                                    loggedInUser.id,
+
+                                songId:
+                                    songId
+                            })
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    showToast(
+                        result.message ||
+                        "Unable to update Like"
+                    );
+
+                    return;
+
+                }
+
+
+                likedSongs =
+                    likedSongs.filter(
+                        song =>
+                            song._id !== songId
+                    );
+
+
+                document.getElementById(
+                    "likedCount"
+                ).textContent =
+                    likedSongs.length;
+
+
+                displayLikedSongs();
+
+
+                showToast(
+                    "Song removed from Liked Songs 💔"
+                );
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                showToast(
+                    "Cannot connect to server"
+                );
+
+            }
+
+        }
+
+
+        /* ================= PLAYER ================= */
+
+        function togglePlay() {
+
+            if (!currentSongData) {
+
+                showToast(
+                    "Choose a song first 🎵"
+                );
+
+                return;
+
+            }
+
+
+            if (audioPlayer.paused) {
+
+                audioPlayer.play();
+
+                isPlaying = true;
+
+                document.getElementById(
+                    "mainPlayButton"
+                ).textContent = "❚❚";
+
+            } else {
+
+                audioPlayer.pause();
+
+                isPlaying = false;
+
+                document.getElementById(
+                    "mainPlayButton"
+                ).textContent = "▶";
+
+            }
+
+        }
+
+
+        function toggleCurrentLike() {
+
+            if (!currentSongData) {
+
+                showToast(
+                    "Choose a song first"
+                );
+
+                return;
+
+            }
+
+
+            unlikeSong(
+                currentSongData._id
+            );
+
+        }
+
+
+        function previousSong() {
+
+            showToast(
+                "Previous song"
+            );
+
+        }
+
+
+        function nextSong() {
+
+            showToast(
+                "Next song"
+            );
+
+        }
+
+
+        /* ================= AUDIO EVENTS ================= */
+
+        audioPlayer.addEventListener(
+            "timeupdate",
+            function () {
+
+                if (!audioPlayer.duration) return;
+
+
+                const percentage =
+                    (
+                        audioPlayer.currentTime /
+                        audioPlayer.duration
+                    ) * 100;
+
+
+                document.getElementById(
+                    "progress"
+                ).style.width =
+                    percentage + "%";
+
+
+                document.getElementById(
+                    "currentTime"
+                ).textContent =
+                    formatTime(
+                        audioPlayer.currentTime
+                    );
+
+
+                document.getElementById(
+                    "totalTime"
+                ).textContent =
+                    formatTime(
+                        audioPlayer.duration
+                    );
+
+            }
+        );
+
+
+        audioPlayer.addEventListener(
+            "ended",
+            function () {
+
+                isPlaying = false;
+
+                document.getElementById(
+                    "mainPlayButton"
+                ).textContent = "▶";
+
+            }
+        );
+
+
+        function seekSong(event) {
+
+            if (!audioPlayer.duration) return;
+
+
+            const bar =
+                event.currentTarget;
+
+            const rect =
+                bar.getBoundingClientRect();
+
+
+            const position =
+                (event.clientX - rect.left) /
+                rect.width;
+
+
+            audioPlayer.currentTime =
+                position *
+                audioPlayer.duration;
+
+        }
+
+
+        function formatTime(seconds) {
+
+            if (!seconds || isNaN(seconds)) {
+                return "0:00";
+            }
+
+
+            const minutes =
+                Math.floor(seconds / 60);
+
+
+            const remainingSeconds =
+                Math.floor(seconds % 60);
+
+
+            return (
+                minutes +
+                ":" +
+                String(remainingSeconds)
+                    .padStart(2, "0")
+            );
+
+        }
+
+
+        /* ================= SEARCH ================= */
+
+        document
+            .getElementById("musicSearch")
+            .addEventListener(
+                "input",
+                function () {
+
+                    const search =
+                        this.value
+                            .toLowerCase()
+                            .trim();
+
+
+                    const songs =
+                        document.querySelectorAll(
+                            ".liked-song"
+                        );
+
+
+                    songs.forEach(song => {
+
+                        const text =
+                            song.textContent
+                                .toLowerCase();
+
+
+                        song.style.display =
+                            text.includes(search)
+                            ? ""
+                            : "none";
+
+                    });
+
+                }
+            );
+
+
+        /* ================= PLAYLIST ================= */
+
+        function createPlaylist() {
+
+            showToast(
+                "Playlist creation coming soon 🎵"
+            );
+
+        }
+
+
+        /* ================= TOAST ================= */
+
+        function showToast(message) {
+
+            const toast =
+                document.getElementById("toast");
+
+
+            toast.textContent =
+                message;
+
+
+            toast.classList.add("show");
+
+
+            setTimeout(
+                function () {
+
+                    toast.classList.remove(
+                        "show"
+                    );
+
+                },
+                2500
+            );
+
+        }
+
+
+        /* ================= HTML SAFETY ================= */
+
+        function escapeHtml(text) {
+
+            if (!text) return "";
+
+
+            return String(text)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        /* ================= START ================= */
+
+        loadLikedSongs();
+
+    </script>
+
+</body>
+
+</html>

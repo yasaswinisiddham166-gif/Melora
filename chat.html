@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chat - Melora</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <img src="assets/Images/melora-logo.png" alt="Melora Logo">
+        </div>
+
+        <nav class="navigation">
+
+            <a href="index.html" class="nav-item">
+                <span>⌂</span>
+                <p>Home</p>
+            </a>
+
+            <a href="explore.html" class="nav-item">
+                <span>⌕</span>
+                <p>Explore</p>
+            </a>
+
+            <a href="my-music.html" class="nav-item">
+                <span>♫</span>
+                <p>My Music</p>
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>♡</span>
+                <p>Liked Songs</p>
+            </a>
+
+            <a href="friends.html" class="nav-item">
+                <span>👥</span>
+                <p>Friends</p>
+            </a>
+
+            <a href="chat.html" class="nav-item active">
+                <span>💬</span>
+                <p>Chat</p>
+            </a>
+
+            <a href="lyra.html" class="nav-item">
+                <span>🤖</span>
+                <p>Lyra AI</p>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="#" class="nav-item">
+                <span>⚙</span>
+                <p>Settings</p>
+            </a>
+
+            <a href="#" class="profile-small">
+
+                <div class="avatar">V</div>
+
+                <div>
+                    <strong>Varshika</strong>
+                    <small>View Profile</small>
+                </div>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content chat-main">
+
+        <header class="topbar">
+
+            <div class="mobile-brand">
+                <img
+                    src="assets/Images/melora-logo.png"
+                    alt="Melora"
+                >
+            </div>
+
+            <div class="search-box">
+
+                <span>⌕</span>
+
+                <input
+                    type="text"
+                    id="chatSearch"
+                    placeholder="Search conversations..."
+                >
+
+            </div>
+
+            <div class="top-actions">
+
+                <button class="icon-button">
+                    ♡
+                </button>
+
+                <button class="notification">
+                    ♧
+                    <span></span>
+                </button>
+
+                <div class="top-profile">
+                    <div class="avatar">V</div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CHAT ================= -->
+
+        <section class="chat-container">
+
+            <!-- CHAT LIST -->
+
+            <div class="chat-list">
+
+                <div class="chat-list-header">
+
+                    <div>
+
+                        <p class="mini-title">
+                            MESSAGES
+                        </p>
+
+                        <h2>
+                            Chats
+                        </h2>
+
+                    </div>
+
+                    <button
+                        class="new-chat-button"
+                        onclick="newChat()"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+
+                <!-- SEARCH -->
+
+                <div class="chat-search">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        id="conversationSearch"
+                        placeholder="Search chats..."
+                    >
+
+                </div>
+
+
+                <!-- CONVERSATIONS -->
+
+                <div
+                    class="conversation-list"
+                    id="conversationList"
+                >
+
+                    <button
+                        class="conversation active-conversation"
+                        onclick="openConversation('Ananya')"
+                    >
+
+                        <div class="chat-avatar avatar-pink">
+                            A
+                            <span class="online"></span>
+                        </div>
+
+                        <div class="conversation-info">
+
+                            <strong>
+                                Ananya
+                            </strong>
+
+                            <p>
+                                You: That song is beautiful!
+                            </p>
+
+                        </div>
+
+                        <div class="conversation-time">
+
+                            <small>
+                                8:42 PM
+                            </small>
+
+                            <span>
+                                2
+                            </span>
+
+                        </div>
+
+                    </button>
+
+
+                    <button
+                        class="conversation"
+                        onclick="openConversation('Shreya')"
+                    >
+
+                        <div class="chat-avatar avatar-green">
+                            S
+                        </div>
+
+                        <div class="conversation-info">
+
+                            <strong>
+                                Shreya
+                            </strong>
+
+                            <p>
+                                Listen to this 🎧
+                            </p>
+
+                        </div>
+
+                        <div class="conversation-time">
+
+                            <small>
+                                7:15 PM
+                            </small>
+
+                        </div>
+
+                    </button>
+
+
+                    <button
+                        class="conversation"
+                        onclick="openConversation('Rahul')"
+                    >
+
+                        <div class="chat-avatar avatar-orange">
+                            R
+                        </div>
+
+                        <div class="conversation-info">
+
+                            <strong>
+                                Rahul
+                            </strong>
+
+                            <p>
+                                Let's listen together!
+                            </p>
+
+                        </div>
+
+                        <div class="conversation-time">
+
+                            <small>
+                                Yesterday
+                            </small>
+
+                        </div>
+
+                    </button>
+
+
+                    <button
+                        class="conversation"
+                        onclick="openConversation('Priya')"
+                    >
+
+                        <div class="chat-avatar request-avatar-two">
+                            P
+                        </div>
+
+                        <div class="conversation-info">
+
+                            <strong>
+                                Priya
+                            </strong>
+
+                            <p>
+                                Hey! 👋
+                            </p>
+
+                        </div>
+
+                        <div class="conversation-time">
+
+                            <small>
+                                Mon
+                            </small>
+
+                        </div>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONVERSATION -->
+
+            <div class="conversation-panel">
+
+                <!-- CHAT HEADER -->
+
+                <div class="conversation-header">
+
+                    <div class="conversation-user">
+
+                        <div class="chat-avatar avatar-pink">
+                            A
+                            <span class="online"></span>
+                        </div>
+
+                        <div>
+
+                            <strong id="chatUser">
+                                Ananya
+                            </strong>
+
+                            <span id="chatStatus">
+                                ● Online
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="conversation-actions">
+
+                        <button
+                            onclick="startListenTogether()"
+                            title="Listen Together"
+                        >
+                            🎧
+                        </button>
+
+                        <button>
+                            ⋮
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MESSAGES -->
+
+                <div
+                    class="messages"
+                    id="messages"
+                >
+
+                    <div class="message-date">
+                        Today
+                    </div>
+
+
+                    <div class="message received">
+
+                        <div class="message-avatar">
+                            A
+                        </div>
+
+                        <div class="message-content">
+
+                            <span>
+                                Ananya
+                            </span>
+
+                            <p>
+                                Hey! Have you heard this song? 🎵
+                            </p>
+
+                            <small>
+                                8:35 PM
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SHARED SONG -->
+
+                    <div class="shared-song received">
+
+                        <div class="shared-cover cover-two">
+                            ♫
+                        </div>
+
+                        <div class="shared-info">
+
+                            <small>
+                                SHARED SONG
+                            </small>
+
+                            <strong>
+                                Until I Found You
+                            </strong>
+
+                            <span>
+                                Stephen Sanchez
+                            </span>
+
+                        </div>
+
+                        <button
+                            onclick="playSong('Until I Found You')"
+                        >
+                            ▶
+                        </button>
+
+                    </div>
+
+
+                    <div class="message sent">
+
+                        <div class="message-content">
+
+                            <p>
+                                Yes! I love this one ❤️
+                            </p>
+
+                            <small>
+                                8:38 PM
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="message received">
+
+                        <div class="message-avatar">
+                            A
+                        </div>
+
+                        <div class="message-content">
+
+                            <span>
+                                Ananya
+                            </span>
+
+                            <p>
+                                We should listen together sometime!
+                            </p>
+
+                            <small>
+                                8:40 PM
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="message sent">
+
+                        <div class="message-content">
+
+                            <p>
+                                Let's do it now! 🎧
+                            </p>
+
+                            <small>
+                                8:42 PM
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SHARED SONG PREVIEW -->
+
+                <div
+                    class="share-preview"
+                    id="sharePreview"
+                >
+
+                    <div class="preview-cover">
+                        ♪
+                    </div>
+
+                    <div>
+
+                        <small>
+                            SHARING
+                        </small>
+
+                        <strong id="shareSongName">
+                            Golden Hour
+                        </strong>
+
+                    </div>
+
+                    <button
+                        onclick="cancelShare()"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <!-- MESSAGE INPUT -->
+
+                <div class="message-input-area">
+
+                    <button
+                        class="input-action"
+                        onclick="shareSong()"
+                    >
+                        ♫
+                    </button>
+
+                    <button
+                        class="input-action"
+                        onclick="sharePlaylist()"
+                    >
+                        📂
+                    </button>
+
+                    <input
+                        type="text"
+                        id="messageInput"
+                        placeholder="Write a message..."
+                        onkeydown="handleMessageKey(event)"
+                    >
+
+                    <button
+                        class="send-button"
+                        onclick="sendMessage()"
+                    >
+                        ➤
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= MUSIC PLAYER ================= -->
+
+    <div class="music-player">
+
+        <div class="now-playing">
+
+            <div class="mini-cover">
+                ♪
+            </div>
+
+            <div class="song-details">
+
+                <strong id="currentSong">
+                    Choose a song
+                </strong>
+
+                <span id="currentArtist">
+                    Melora
+                </span>
+
+            </div>
+
+            <button class="like-button">
+                ♡
+            </button>
+
+        </div>
+
+
+        <div class="player-controls">
+
+            <div class="control-buttons">
+
+                <button>↶</button>
+
+                <button
+                    class="play-button"
+                    id="mainPlayButton"
+                    onclick="togglePlay()"
+                >
+                    ▶
+                </button>
+
+                <button>↷</button>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <span>0:00</span>
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress"
+                        id="progress"
+                    ></div>
+
+                </div>
+
+                <span>3:45</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="player-options">
+
+            <button>♧</button>
+
+            <button>🔊</button>
+
+            <div class="volume-bar">
+                <div></div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST -->
+
+    <div
+        class="toast"
+        id="toast"
+    >
+        Welcome to Melora
+    </div>
+
+
+    <script src="js/app.js"></script>
+<script src="js/session.js"></script>
+
+<script>
+    checkLogin();
+</script>
+
+</body>
+
+</html>

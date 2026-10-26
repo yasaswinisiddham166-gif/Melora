@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyra - Melora</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo-area">
+            <img src="assets/Images/melora-logo.png" alt="Melora Logo">
+            <h2>Melora</h2>
+        </div>
+
+        <nav>
+
+            <a href="index.html" class="nav-item">
+                <span>🏠</span>
+                <p>Home</p>
+            </a>
+
+            <a href="explore.html" class="nav-item">
+                <span>🔎</span>
+                <p>Explore</p>
+            </a>
+
+            <a href="my-music.html" class="nav-item">
+                <span>🎵</span>
+                <p>My Music</p>
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>❤️</span>
+                <p>Liked Songs</p>
+            </a>
+
+            <a href="friends.html" class="nav-item">
+                <span>👥</span>
+                <p>Friends</p>
+            </a>
+
+            <a href="chat.html" class="nav-item">
+                <span>💬</span>
+                <p>Chat</p>
+            </a>
+
+            <a href="lyra.html" class="nav-item active">
+                <span>🤖</span>
+                <p>Lyra AI</p>
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>⚙️</span>
+                <p>Settings</p>
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>👤</span>
+                <p>Profile</p>
+            </a>
+            <a href="#" class="nav-item" onclick="logoutUser()">
+                <span>🚪</span>
+                <p>Logout</p>
+            </a>
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div class="search-box">
+                <span>🔍</span>
+                <input
+                    type="text"
+                    id="lyraSearch"
+                    placeholder="Search music..."
+                >
+            </div>
+
+            <div class="profile-mini">
+                <div class="profile-avatar">V</div>
+                <span>Varshika</span>
+            </div>
+
+        </header>
+
+
+        <!-- LYRA SECTION -->
+        <section class="lyra-page">
+
+            <div class="lyra-header">
+
+                <div class="lyra-icon">
+                    🤖
+                </div>
+
+                <div>
+                    <h1>Meet Lyra</h1>
+                    <p>Your personal music companion 🎵</p>
+                </div>
+
+            </div>
+
+
+            <!-- CHAT AREA -->
+            <div class="lyra-chat">
+
+                <div class="lyra-messages" id="lyraMessages">
+
+                    <!-- FIRST MESSAGE -->
+                    <div class="lyra-message ai">
+
+                        <div class="lyra-avatar">
+                            🤖
+                        </div>
+
+                        <div class="message-content">
+
+                            <strong>Lyra</strong>
+
+                            <p>
+                                Hi! I'm Lyra 💕
+                                Tell me how you're feeling or what kind of
+                                music you're looking for.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- QUICK PROMPTS -->
+                    <div class="quick-prompts">
+
+                        <button onclick="useLyraPrompt('I am feeling sad')">
+                            😔 I'm feeling sad
+                        </button>
+
+                        <button onclick="useLyraPrompt('Give me songs for studying')">
+                            📚 Study music
+                        </button>
+
+                        <button onclick="useLyraPrompt('I want romantic songs')">
+                            💕 Romantic songs
+                        </button>
+
+                        <button onclick="useLyraPrompt('I want happy songs')">
+                            🌸 Happy songs
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- INPUT -->
+                <div class="lyra-input-area">
+
+                    <input
+                        type="text"
+                        id="lyraInput"
+                        placeholder="Tell Lyra what you're feeling..."
+                        onkeydown="handleLyraKey(event)"
+                    >
+
+                    <button onclick="sendLyraMessage()">
+                        ➤
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- FEATURE CARDS -->
+            <div class="lyra-features">
+
+                <div class="lyra-feature-card">
+
+                    <span>🎭</span>
+
+                    <h3>Mood Music</h3>
+
+                    <p>
+                        Tell Lyra your mood and discover songs that match it.
+                    </p>
+
+                </div>
+
+
+                <div class="lyra-feature-card">
+
+                    <span>🎧</span>
+
+                    <h3>Smart Recommendations</h3>
+
+                    <p>
+                        Get personalized music suggestions based on your request.
+                    </p>
+
+                </div>
+
+
+                <div class="lyra-feature-card">
+
+                    <span>💬</span>
+
+                    <h3>Music Conversations</h3>
+
+                    <p>
+                        Talk with Lyra naturally about your music preferences.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MUSIC PLAYER -->
+    <div class="music-player">
+
+        <div class="current-song">
+
+            <div class="song-cover">
+                🎵
+            </div>
+
+            <div>
+                <h4 id="currentSong">
+                    Until I Found You
+                </h4>
+
+                <p>Stephen Sanchez</p>
+            </div>
+
+        </div>
+
+
+        <div class="player-controls">
+
+            <button>⏮</button>
+
+            <button
+                class="play-button"
+                onclick="togglePlay()"
+            >
+                ▶
+            </button>
+
+            <button>⏭</button>
+
+        </div>
+
+
+        <div class="player-progress">
+
+            <span>1:24</span>
+
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+
+            <span>3:26</span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="js/app.js"></script>
+<script src="js/session.js"></script>
+
+<script>
+    checkLogin();
+</script>
+
+/* ==============================
+   LYRA AI
+============================== */
+
+function sendLyraMessage() {
+
+    const input = document.getElementById("lyraInput");
+
+    const message = input.value.trim();
+
+    if (message === "") {
+        return;
+    }
+
+    addLyraMessage(message, "user");
+
+    input.value = "";
+
+    setTimeout(function() {
+
+        const response = getLyraResponse(message);
+
+        addLyraMessage(response, "ai");
+
+    }, 500);
+}
+
+
+/* ENTER KEY */
+
+function handleLyraKey(event) {
+
+    if (event.key === "Enter") {
+
+        sendLyraMessage();
+
+    }
+
+}
+
+
+/* QUICK PROMPT */
+
+function useLyraPrompt(message) {
+
+    document.getElementById("lyraInput").value = message;
+
+    sendLyraMessage();
+
+}
+
+
+/* ADD MESSAGE */
+
+function addLyraMessage(message, type) {
+
+    const container =
+        document.getElementById("lyraMessages");
+
+    const messageDiv =
+        document.createElement("div");
+
+    messageDiv.className =
+        "lyra-message " + type;
+
+
+    if (type === "ai") {
+
+        messageDiv.innerHTML = `
+            <div class="lyra-avatar">🤖</div>
+
+            <div class="message-content">
+                <strong>Lyra</strong>
+                <p>${message}</p>
+            </div>
+        `;
+
+    } else {
+
+        messageDiv.innerHTML = `
+            <div class="message-content user-message">
+                <p>${message}</p>
+            </div>
+        `;
+
+    }
+
+
+    container.appendChild(messageDiv);
+
+    container.scrollTop =
+        container.scrollHeight;
+}
+
+
+/* ==============================
+   LYRA RESPONSES
+============================== */
+
+function getLyraResponse(message) {
+
+    const text =
+        message.toLowerCase();
+
+
+    if (
+        text.includes("sad") ||
+        text.includes("depressed") ||
+        text.includes("upset")
+    ) {
+
+        return `
+            I'm here for you 💕
+            Try some calm and emotional songs like
+            <b>Until I Found You</b>,
+            <b>Perfect</b> and
+            <b>Photograph</b>.
+            Sometimes music can make difficult moments feel a little lighter 🌸
+        `;
+
+    }
+
+
+    if (
+        text.includes("study") ||
+        text.includes("studying") ||
+        text.includes("exam")
+    ) {
+
+        return `
+            Study mode activated 📚🎧
+            I recommend calm instrumental,
+            lo-fi and soft music.
+            Try creating a playlist called
+            <b>Focus Time</b>.
+        `;
+
+    }
+
+
+    if (
+        text.includes("romantic") ||
+        text.includes("love")
+    ) {
+
+        return `
+            Aww, romantic mood 💕
+            Try songs like
+            <b>Perfect</b>,
+            <b>Until I Found You</b> and
+            <b>All of Me</b>.
+            Perfect for a soft romantic playlist 🌷
+        `;
+
+    }
+
+
+    if (
+        text.includes("happy") ||
+        text.includes("joy") ||
+        text.includes("fun")
+    ) {
+
+        return `
+            Let's make your mood brighter! 🌸✨
+            Try some upbeat pop,
+            dance and feel-good songs.
+            Your playlist could be called
+            <b>Good Vibes Only</b> 🎶
+        `;
+
+    }
+
+
+    if (
+        text.includes("telugu")
+    ) {
+
+        return `
+            Telugu music sounds perfect! 🎵
+            Try exploring Telugu romantic,
+            melody and energetic songs.
+            You can also create separate
+            Telugu playlists in <b>My Music</b>.
+        `;
+
+    }
+
+
+    if (
+        text.includes("playlist")
+    ) {
+
+        return `
+            Of course! 🎧
+            Tell me the mood or theme of your
+            playlist, like <b>Study</b>,
+            <b>Travel</b>, <b>Love</b> or
+            <b>Chill</b>.
+        `;
+
+    }
+
+
+    return `
+        I understand 💕
+        Tell me your mood, music language,
+        favourite genre or activity.
+        For example:
+        <b>"Give me songs for travelling"</b>
+        or
+        <b>"I want relaxing music"</b>.
+    `;
+}
+
+</script>
+
+</body>
+</html>
